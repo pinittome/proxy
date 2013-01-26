@@ -1,0 +1,19 @@
+{
+  "name": "pinitto.me-proxy",
+  "version": "0.1.0",
+  "description": "Proxy for Pinitto.me services utilising @nodejitu's node-http-proxy",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "forever start -a -p . -l logs/forever.log -o logs/proxy.out.log -e logs/proxy.err.log proxy.js",
+    "stop": "forever stop proxy.js",
+    "clean": "forever cleanlogs proxy.js",
+    "restart": "forever restart proxy.js"
+  },
+  "dependencies": {
+    "http-proxy": "~0.8.7",
+    "forever": "~0.10.0"
+  },
+  "repository": "https://github.com/pinittome/proxy",
+  "author": "Lloyd Watkin <lloyd@evilprofessor.co.uk>",
+  "license": "Apache 2.0"
+}
