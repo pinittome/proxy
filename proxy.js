@@ -22,10 +22,16 @@ var proxy = new httpProxy.HttpProxy({
     enable: { xforward: true }
 });
 
-https.createServer(options.https, function (req, res) {
+httpProxy.createServer(options, function (req, res) {
     proxy.proxyRequest(req, res)
-}).listen(443);
+}).listen(443).on('upgrade', function (req, socket, head) {
+    proxy.proxyWebSocketRequest(req, socket, head);
+});
 
-http.createServer(function (req, res) { 
+httpProxy.createServer(function (req, res) { 
     proxy.proxyRequest(req, res)
-}).listen(80);
+}).listen(80).on('upgrade', function(req, socket, head) {
+    proxy.proxyWebSocketRequest(req, socket, head);
+});
+
+
