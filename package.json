@@ -1,6 +1,6 @@
 {
   "name": "pinitto.me-proxy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Proxy for Pinitto.me services utilising @nodejitu's node-http-proxy",
   "main": "proxy.js",
   "scripts": {
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "http-proxy": "~0.8.7",
-    "forever": "~0.10.0"
+    "forever": "~0.10.0",
+    "connect-gzip": "~0.1.6"
   },
   "repository": "https://github.com/pinittome/proxy",
   "author": "Lloyd Watkin <lloyd@evilprofessor.co.uk>",
