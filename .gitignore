@@ -5,4 +5,4 @@ node_modules
 logs/*
 keys/*
 config.*.js
-/config.example.js
+!config.example.js
