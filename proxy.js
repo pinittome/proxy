@@ -1,8 +1,7 @@
 var fs = require('fs'),
     http = require('http'),
     https = require('https'),
-    httpProxy = require('http-proxy'),
-    gzip = require('connect-gzip')
+    httpProxy = require('http-proxy')
 
 environment = process.env.NODE_ENV || 'production'
 config      = require('./config.' + environment)
@@ -30,9 +29,9 @@ var listenOn = config.listen || [ 80, 443 ]
 
 listenOn.forEach(function(port) {
 
-    httpProxy.createServer(options, gzip.gzip(), function (req, res) {
+    httpProxy.createServer(options, function (req, res) {
         proxy.proxyRequest(req, res)
-    }).listen(443).on('upgrade', function (req, socket, head) {
+    }).listen(port).on('upgrade', function (req, socket, head) {
         proxy.proxyWebSocketRequest(req, socket, head);
     })
 })
