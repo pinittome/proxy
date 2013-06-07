@@ -13,7 +13,7 @@ var options = {
         ca: config.ssl.ca ? fs.readFileSync(config.ssl.ca, 'utf8') : null,
         ciphers: 'ECDHE-RSA-AES256-SHA:AES256-SHA:RC4-SHA:RC4:HIGH:'
             + '!MD5:!aNULL:!EDH:!AESGCM',
-        honourCipherOrder: true
+        honorCipherOrder: true
     },
     enable: {
         xforward: true // enables X-Forwarded-For
