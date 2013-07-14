@@ -25,15 +25,18 @@ var proxy = new httpProxy.HttpProxy({
     enable: { xforward: true }
 })
 
-var listenOn = config.listen || [ 80, 443 ]
-
-listenOn.forEach(function(port) {
-
     httpProxy.createServer(options, function (req, res) {
         proxy.proxyRequest(req, res)
-    }).listen(port).on('upgrade', function (req, socket, head) {
+    }).listen(443).on('upgrade', function (req, socket, head) {
         proxy.proxyWebSocketRequest(req, socket, head);
     })
-})
 
-console.log("Ready to proxy requests on port(s) " + listenOn.join(', ') + "...")
+    var httpOptions = options
+    delete httpOptions.https
+    httpProxy.createServer(httpOptions, function (req, res) {
+        proxy.proxyRequest(req, res)
+    }).listen(80).on('upgrade', function (req, socket, head) {
+        proxy.proxyWebSocketRequest(req, socket, head);
+    })
+
+console.log("Ready to proxy requests...")

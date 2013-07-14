@@ -7,5 +7,4 @@ module.exports = {
     app: {
         port: 3000
     },
-    listen: [ 80, 443 ] /* optional */
 }
