@@ -10,7 +10,10 @@ var options = {
     https: {
         key: fs.readFileSync(config.ssl.key, 'utf8'),
         cert: fs.readFileSync(config.ssl.cert, 'utf8'),
-        ca: config.ssl.ca ? fs.readFileSync(config.ssl.ca, 'utf8') : null
+        ca: config.ssl.ca ? fs.readFileSync(config.ssl.ca, 'utf8') : null,
+        ciphers: 'ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:'
+            + 'HIGH:!MD5:!aNULL:!EDH',
+        honorCipherOrder: true
     },
     enable: {
         xforward: true // enables X-Forwarded-For
