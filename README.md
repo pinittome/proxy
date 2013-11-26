@@ -12,3 +12,7 @@ Code also comes with Nodejitsu's ```forever``` as a dependency with ```npm start
 * http://nodejitsu.com/
 * https://github.com/nodejitsu/node-http-proxy
 * https://github.com/nodejitsu/forever
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pinittome/proxy/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
